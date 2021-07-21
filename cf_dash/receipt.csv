@@ -1,0 +1,52 @@
+﻿quantity, weight_unit , total_weight ,item,,,,price,co2_kg,co2_item
+1, 0.37 , 0.37 ,Sainsbury's Broccoli Loose,,,,£0.59,0.67, 0.25 
+1, 0.44 , 0.44 ,Sainsbury's Onions Loose,,,,£0.38,0.24, 0.11 
+1, 0.20 , 0.80 ,"Sainsbury's Conference Pears, Ripe & Ready x4",,,,£2.00,0.29, 0.23 
+1, 0.24 , 0.24 ,Sainsbury's Responsibly Sourced Scottish Salmon Fillets ,,,,£3.25,3.80, 0.91 
+3, 0.22 , 0.66 ,By Sainsbury?s Large Ripe & Ready Avocado,,,,£3.00,1.00, 0.66 
+1, 0.19 , 1.14 ,Sainsbury's Braeburn Apples x6,,,,£1.60,0.31, 0.36 
+2, 0.23 , 0.46 ,Sainsbury's Stringless Beans ,,,,£2.60,2.74, 1.26 
+1, 0.20 , 0.20 ,Sainsbury's Curly Leaf Lettuce ,,,,£0.65,2.69, 0.54 
+1, 0.40 , 0.40 ,Sainsbury's Walnut Cob Taste the Difference,,,,£1.70,0.78, 0.31 
+1, 0.09 , 0.45 ,"New York Bakery Co. Bagels, Plain x5",,,,£1.60,0.88, 0.39 
+1, 0.30 , 0.30 ,"Sainsbury's Whole Cucumber, SO Organic",,,,£1.10,2.59, 0.78 
+2, 0.25 , 0.50 ,"Sainsbury's Plum Sundream Tomatoes, Taste the Difference ",,,,£3.30,2.89, 1.44 
+1, 0.05 , 0.05 ,Sainsbury's Garlic,,,,£0.25,0.67, 0.03 
+2, 0.36 , 0.72 ,Sainsbury's Wholemeal Pittas x6,,,,£0.90,0.78, 0.56 
+1, 0.24 , 0.24 ,Rankin Selection Potato Farls x4,,,,£1.40,0.78, 0.19 
+1, 0.40 , 0.40 ,"Sainsbury's Vittoria on the Vine Cherry Tomatoes, Taste The Difference",,,,£2.50,2.89, 1.15 
+3, 0.36 , 1.08 ,Sainsbury's Frozen Pain Au Chocolat x6 ,,,,£6.75,1.31, 1.41 
+2, 0.36 , 0.72 ,Sainsbury's White Pittas x6,,,,£0.90,0.97, 0.70 
+2, 0.30 , 0.60 ,Sainsbury's Frozen All Butter Croissants x6,,,,£4.50,1.31, 0.79 
+1, 0.50 , 0.50 ,Napolina Conchiglie ,,,,£1.30,3.19, 1.60 
+1, 0.40 , 0.40 ,Higgidy Spinach & Feta Quiche ,,,,£4.00,, -   
+1, 0.20 , 0.20 ,"Sainsbury's Zamli Dates, Taste the Difference ",,,,£2.50,1.07, 0.21 
+1, 0.10 , 0.10 ,Nescafé Azera Americano Instant Coffee ,,,,£4.60,0.33, 0.03 
+1, 0.50 , 0.50 ,Nesquik Chocolate Milkshake Powder ,,,,£3.30,3.16, 1.58 
+1, 1.00 , 1.00 ,Oatly Oat Drink Semi Chilled 1L,,,,£1.80,0.80, 0.80 
+1, 0.22 , 0.22 ,"Kellogg's Nutri-Grain Soft & Fruity Bars, Strawberry ",,,,£2.00,1.58, 0.35 
+1, 0.10 , 0.10 ,Sainsbury's Pine Nuts ,,,,£3.60,1.17, 0.12 
+1, 0.17 , 0.17 ,Colman's Original English Mustard ,,,,£1.00,1.53, 0.26 
+1, 2.00 , 2.00 ,"Sainsbury's Vivaldi White Potatoes, Taste the Difference ",,,,£2.60,0.25, 0.49 
+1, 0.50 , 0.50 ,Sainsbury's Wholewheat Fusilli ,,,,£0.55,3.19, 1.60 
+1, 0.23 , 0.23 ,Doritos Lightly Salted Sharing Tortilla Chips ,,,,£2.50,1.06, 0.24 
+1, 0.80 , 0.80 ,Heinz Baked Beans Snap Pots 4 Pack ,,,,£2.50,0.11, 0.09 
+1, 0.19 , 0.19 ,Sainsbury's Green Pesto,,,,£0.90,2.71, 0.52 
+1, 0.20 , 0.20 ,Sainsbury's Parmigiano Reggiano Cheese ,,,,£3.30,14.08, 2.82 
+1, 0.38 , 0.38 ,Nestle Nesquik Chocolate Cereal ,,,,£2.65,2.64, 1.00 
+1, 0.30 , 0.30 ,Sainsbury's Double Cream ,,,,£1.10,5.34, 1.60 
+1, 0.38 , 0.38 ,Kellogg's Krave Chocolate Hazelnut Cereal ,,,,£3.00,2.64, 1.00 
+1, 1.00 , 1.00 ,Sainsbury's Basmati Rice ,,,,£1.55,2.54, 2.54 
+1, 0.51 , 0.51 ,Sainsbury's Plain Tortilla Wraps ,,,,£0.90,0.97, 0.50 
+3, 0.13 , 0.39 ,"Sainsbury's Buffalo Mozzarella Cheese, Taste the Difference ",,,,£6.00,8.48, 3.31 
+1, 0.19 , 0.19 ,Sainsbury's Chilli Pesto ,,,,£0.90,2.71, 0.52 
+1, 0.25 , 0.25 ,"Sainsbury's English Butter, Unsalted ",,,,£1.50,9.90, 2.48 
+1, 0.08 , 0.08 ,Sainsbury's Fresh Living Large Basil Pot,,,,£1.80,0.39, 0.03 
+1, 0.50 , 0.50 ,Napolina Farfalle,,,,  £1.30,3.19, 1.60 
+1, 0.40 , 0.40 ," Sainsbury's Leeks, SO Organic",,,,   £2.25,1.41, 0.57 
+1, 1.75 , 1.75 ,"Sainsbury's Apple & Mango Juice, Not From Concentrate ",,,, £1.95,2.96, 5.18 
+1, 0.20 , 0.20 , Sainsbury's Taramasalata     ,,,, £1.20,1.85, 0.37 
+,,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,

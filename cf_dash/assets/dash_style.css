@@ -1,0 +1,199 @@
+body {
+    margin: 0;
+    background-color: #e5d2b6;
+    font-weight: bold;
+    font-family: 'Zen Loop', cursive;
+}
+
+.header {
+    background-color: #5e8d66;
+    height: 260px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header-title {
+    text-align:'center';
+    display: block;
+    align-self: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    background-color: #5e8d66 ;
+    color: #b9cebd;
+    font-size: 3.5em;
+    font-weight: bold;
+    font-family: 'Zen Loop', cursive;
+}
+
+.link-moreinfo {
+    color: #b9cebd;
+    font-style: italic;
+    font-size: larger;
+    position: relative;
+    align-self: center;
+    font-family: 'Zen Loop', cursive;
+    font-size: 1.5em;
+}
+
+.link-moreinfo:hover {
+    color:#5e8d66 ;
+    background-color: #b9cebd;
+}
+
+
+
+.header-description {
+    color:darkslategrey;
+    font-weight: bold;
+    margin: 4px auto;
+    text-align: center;
+    max-width: 360px;
+    text-justify: inter-word;
+    font-size: 1.3em;
+    font-family: 'Zen Loop', cursive;
+}
+
+.wrapper {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1024px;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-top: 32px;
+}
+
+.card {
+    margin-bottom: 24px;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.18);
+    position: relative;
+    display: block;
+    align-content: 'right';
+    width: 75%;
+    height: 100%;
+    float: right;
+
+}
+
+.dropdown {
+    position: relative;
+    top: 280px;
+    display: block;
+    width:18%;
+    border: solid 2px darkslategrey;
+    font-family: 'Zen Loop', cursive;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-left: 20px;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.18);
+
+}
+
+.menu-title {
+    font-family: 'Zen Loop', cursive;
+    font-size: 1.8em;
+    font-weight: bold;
+    position: relative;
+    top: 270px;
+    display: block;
+    margin-left: 20px;
+    margin-top: 30px;
+
+}
+
+.icon-cloud{
+    width: 8%;
+    position: relative;
+    display: inline-block;
+    margin-left: 25px;
+    margin-right: 25px;
+    
+}
+
+.total-cf {
+    position: relative;
+    display: inline-block;
+    font-size: 1.4em;
+    max-width: 250px;
+
+}
+
+.icon-car {
+    width: 8%;
+    position: relative;
+    display: inline-block;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.drive-cf {
+    position: relative;
+    display: inline-block;
+    font-size: 1.4em;
+    max-width: 250px;  
+    
+
+}
+
+.icon-planet {
+    width: 8%;
+    position: relative;
+    display: inline-block;
+    margin-left: 25px;
+    margin-right: 25px;
+   
+}
+
+.swap {
+    position: relative;
+    display: inline-block;
+    font-size: 1.4em;
+    max-width: 250px;
+   
+}
+
+/* setting footer properties*/
+.footer {
+    font-size: 1.2em;
+    display: flex;
+    clear:both;
+    position: relative;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem; 
+    background-color: #5e8d66;
+    color:#b9cebd;
+    
+}
+
+/* split footer into 3 columns */
+.h4 {
+    margin-bottom: 50px;
+    font-weight: bold;
+    float:left;
+    width: 33.3%;
+    text-align: left;
+  }
+  
+  /* Clear floats after the columns */
+  .footer:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+.link-resources {
+    position: relative;
+    display: block;
+    }
+.link-resources:visited {
+color: #b9cebd;
+
+}
+
+.link-resources:hover {
+    color:#5e8d66 ;
+    background-color: #b9cebd;
+
+}
