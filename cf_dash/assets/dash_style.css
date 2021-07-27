@@ -186,6 +186,7 @@ body {
 .link-resources {
     position: relative;
     display: block;
+    color: #b9cebd;
     }
 .link-resources:visited {
 color: #b9cebd;
@@ -195,5 +196,30 @@ color: #b9cebd;
 .link-resources:hover {
     color:#5e8d66 ;
     background-color: #b9cebd;
+
+}
+
+.buttons {
+    box-align:center;
+    margin-left: 35%;
+}
+
+.button {
+    
+    background-color: #5e8d66;
+    color: #b9cebd;
+    width: 10%;
+    height: 5%;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 1.5em;
+    margin: 3px;
+    
+}
+
+
+button:focus {
+    background-color: #b9cebd;
+    color: #5e8d66;
 
 }

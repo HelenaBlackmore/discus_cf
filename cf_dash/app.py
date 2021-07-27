@@ -22,6 +22,8 @@ receipt = pd.read_csv("receipt.csv") #reads the csv receipt
 receipt = receipt[receipt.columns[[0,1,2,3,7,8,9]]]
 receipt = receipt.dropna()
 
+analogies =pd.read_csv("analogies.csv")
+
 #%%
 # remove £ sign
 receipt.price = receipt.price.str.split('£').str.get(-1)
@@ -108,6 +110,7 @@ external_stylesheets = [
 
 
 app = dash.Dash(__name__, external_stylesheets = external_stylesheets)
+server = app.server
 app.title = "CO\u2082 receipts"
 
 
@@ -145,6 +148,15 @@ app.layout = html.Div(
                                             clearable=False,
                                             className="dropdown",
                 ),
+                                html.Div(children = [
+                                    html.Button('car', id='btn-nclicks-1', n_clicks=0, className = "button"),
+                                    html.Button('phone', id='btn-nclicks-2', n_clicks=0,  className = "button"),
+                                    html.Button('kettle', id='btn-nclicks-3', n_clicks=0,  className = "button"),
+                                    html.Button('bottle', id = 'btn-nclicks-4', n_clicks=0, className = "button"),
+                                    html.Div(id='container-button-timestamp')
+                                    ], className = "buttons"),
+
+                        html.Div(children =[
                                 html.Img(alt = "co2 cloud", 
                                          src ="assets/co2_cloud.png",
                                          className="icon-cloud"),
@@ -153,19 +165,22 @@ app.layout = html.Div(
                                        "equivalent to {} kg of CO\u2082".format(total), 
                                        className = "total-cf"),
                                 html.Img(alt = "car exhaust", 
-                                         src = "assets/emission_car.png",
-                                         className = "icon-car"),
-                                html.P(children = " Similar amount of CO\u2082 would be emitted by "
-                                       "an average car driving {} miles / {} km".format(distance_miles, distance_km),
-                                       className = "drive-cf"),
+                                                src = "assets/emission_car.png",
+                                                className = "icon-car"),
+                                        html.P(children = " Similar amount of CO\u2082 would be emitted by "
+                                               "an average car driving {} miles / {} km".format(distance_miles, distance_km),
+                                               className = "drive-cf"),
                                 html.Img(alt = "holding planet",
                                          src = "assets/planet.png",
                                          className = "icon-planet"),
                                 html.P(children = '''You bought {}. Do you know that {} has 
                                                    a similar protein content but {} % lower carbon footprint?'''.format(substitute,swap,cf_dif),
                                        className = "swap")
-            ]
+            ],
+                                className = "top-row"
         ),
+                                ],
+                                ),
         html.Div(
             children=[
                 html.Div(
@@ -203,11 +218,24 @@ app.layout = html.Div(
                            className = "link-resources"),
                             html.A(children = "nutritional information",
                            href = "https://www.gov.uk/government/publications/composition-of-foods-integrated-dataset-cofid",
+                           className = "link-resources"),
+                        html.A(children = "impact of driving", 
+                           href = "https://www.smmt.co.uk/reports/co2-report/", 
+                           className = "link-resources"),
+                        html.A(children = "impact of boiling kettle", 
+                           href = "https://www.confusedaboutenergy.co.uk/index.php/energy-saving-tips/electrical-appliances/64-kettle", 
+                           className = "link-resources"),
+                        html.A(children = "impact of using a phone", 
+                           href = "https://www.gov.uk/government/publications/greenhouse-gas-reporting-conversion-factors-2021", 
+                           className = "link-resources"),
+                        html.A(children = "impact of plastic production", 
+                           href = "https://www.imperial.ac.uk/media/imperial-college/faculty-of-natural-sciences/centre-for-environmental-policy/public/veolia-plastic-whitepaper.pdf", 
                            className = "link-resources")
+                               
                                         ],
                             className = "h4"),
                     html.H4(children = ["ICONS",
-                            html.A(children = "Icons made by Dinosoft Labs and Freepik from Flaticon.com", 
+                            html.A(children = "Icons made by Dinosoft Labs,Iconixar and Freepik from Flaticon.com", 
                            href = "https://www.flaticon.com/",
                            className = "link-resources")],
                             className = "h4"),
@@ -221,9 +249,10 @@ app.layout = html.Div(
         
                 
                                 ]
-            ) ])    
+            ) ])  
+                            
    
-@app.callback(Output("graph", "figure"), [Input("graph_type", "value")] )
+@app.callback(Output("graph", "figure"), Input("graph_type", "value"))
 
 def update_charts(graph_type):
     mask = (
@@ -266,9 +295,13 @@ def update_charts(graph_type):
     cf_impact =fig
 
 
-    return cf_impact         
+    return cf_impact   
+
+  
             
             
 if __name__ == "__main__":
     app.run_server(debug=True)
+    
+#%%
     
