@@ -196,10 +196,10 @@ app.layout = html.Div(
                                        className = "text")],className = 'total-cf'),
                                 html.Div (children = [
                                     html.Img(id="context_img", 
-                                        src = 'assets/emission_car.png',
+                                        
                                          className = "icon"),
                                     html.P(id = "context_text",
-                                           children = "ggggggggg",
+                                           
                                        className = "text")], className = 'context'),
                                 html.Div( children = [
                                     html.Img(alt = "holding planet",
@@ -323,38 +323,40 @@ def update_charts(graph_type):
    [ Output('context_text', 'children'),
     Output("context_img", "src")], 
    [Input("btn-car", "n_clicks"), 
+    Input('btn-phone', 'n_clicks'), 
     Input('btn-kettle', 'n_clicks'), 
-    Input('btn-bottle', 'n_clicks'), 
-    Input('btn-phone', 'n_clicks')]
+    Input('btn-bottle', 'n_clicks')]
 )
 
-def button_click(btn_car, btn_kettle, btn_phone, btn_bottle):
+def button_click(btn_car, btn_phone, btn_kettle, btn_bottle):
     
     
     changed_id = [p['prop_id'] for p in dash.callback_context.triggered][0]
     
     if 'btn-car' in changed_id:
-        src = 'assets/bottle.png'
-        children = '''The CO2 impact of your shopping is equivalent to the CO2 impact of boiling a kettle
-                    {} times'''.format(total/bottle_impact)
+        source = ' assets/emission_car.png'
+        text =   '''The CO\u2082 impact of your shopping is equivalent to the CO\u2082 impact of driving 
+                    {:.0f} km/ {:.0f} miles in a car.'''.format(total/car_impact,total/car_miles_impact)
+        
        
     elif 'btn-kettle' in changed_id:
-        src = 'assets/electric_kettle.png'
-        children = '''The CO2 impact of your shopping is equivalent to the CO2 impact of producing 
-                {} plastic bottles'''.format(total/kettle_impact)
+        source = 'assets/electric-kettle.png'
+        text = '''The CO\u2082 impact of your shopping is equivalent to the CO\u2082 impact of boiling a kettle
+                    {:.0f} times.'''.format(total/bottle_impact)
+        
     elif 'btn-phone' in changed_id:
-        src = 'assets/smartphone.png'
-        children = '''The CO2 impact of your shopping is equivalent to the CO2 impact of using your smartphone for 
-                        {} days.'''.format(total/phone_impact)
+        source = 'assets/smartphone.png'
+        text = '''The CO\u2082 impact of your shopping is equivalent to the CO\u2082 impact of using your smartphone for 
+                        {:.0f} days.'''.format(total/phone_impact)
     else: 
-         src =' assets/car_emission.png'
-         children = '''The CO2 impact of your shopping is equivalent to the CO2 impact of driving 
-                    {}/{} km/miles in a car.'''.format(total/car_impact, total/car_miles_impact)
+         source = 'assets/bottle.png'
+         text = text = '''The CO\u2082 impact of your shopping is equivalent to the CO\u2082 impact of producing 
+                {:.0f} plastic bottles.'''.format(total/kettle_impact)
        
     
 
     
-    return(src, children)
+    return(text, source)
     
             
             
