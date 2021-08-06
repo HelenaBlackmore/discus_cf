@@ -297,8 +297,23 @@ def update_charts(graph_type):
 
     return cf_impact   
 
-  
-            
+@app.callback([Output('output-state', 'children'), Output('output-state', 'src')],
+              [Input('container-button-timestamp', 'n_clicks')])
+              
+def button(submit):
+    mask = (
+        (analogies['context'] == 'children')
+    )
+    context_data = analogies.loc[mask, :]#define mask on analogies df
+        
+    
+     
+    src = context_data.src
+    children = [context_data.text1, total/context_data.impact, context_data.text2]
+        
+    
+return(children, src)
+    
             
 if __name__ == "__main__":
     app.run_server(debug=True)

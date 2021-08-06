@@ -1,6 +1,6 @@
-﻿,average impact,impact measurement,phrasing,statistic source,
-car_km,0.1245,kg Co2e/km ,The CO2 impact of your shopping is equivalent to the CO2 impact of driving [x] km in a car,https://www.smmt.co.uk/reports/co2-report/,
-car_mile,0.200363,kg CO2e/mile,The CO2 impact of your shopping is equivalent to the CO2 impact of driving [x] miles in a car,,
-plast_bottle,0.05147,kg CO2e / bottle (500ml/12.7g),The CO2 impact of your shopping is equivalent to the CO2 impact of producing [x] plastic bottles,https://www.imperial.ac.uk/media/imperial-college/faculty-of-natural-sciences/centre-for-environmental-policy/public/veolia-plastic-whitepaper.pdf,
-phone,0.002617767,kg CO2e/day,The CO2 impact of your shopping is equivalent to the CO2 impact of using your smartphone for [x] days,https://www.gov.uk/government/publications/greenhouse-gas-reporting-conversion-factors-2021,"Urban, B., Tiefenbeck, V., & Roth, K. (2011). Energy consumption of consumer electronics in US homes in 2010. Fraunhofer Center for Sustainable Energy Systems."
-kettle,0.08260274,kg C02e/boil,The CO2 impact of your shopping is equivalent to the CO2 impact of boiling a kettle [x] times,https://www.confusedaboutenergy.co.uk/index.php/energy-saving-tips/electrical-appliances/64-kettle,Could be improved with energy use calculation similar to mobile phone calculations
+﻿context,impact,measurement,text1,text2,statistic source,src
+car,0.1245,kg Co2e/km ,The CO2 impact of your shopping is equivalent to the CO2 impact of driving ,km/miles in a car,https://www.smmt.co.uk/reports/co2-report/,assets/emission_car.png
+car_mile,0.200363,kg CO2e/mile,The CO2 impact of your shopping is equivalent to the CO2 impact of driving  ,miles in a car,https://www.smmt.co.uk/reports/co2-report/,assets/car.png
+plast_bottle,0.05147,kg CO2e / bottle (500ml/12.7g),The CO2 impact of your shopping is equivalent to the CO2 impact of producing ,plastic bottles,https://www.imperial.ac.uk/media/imperial-college/faculty-of-natural-sciences/centre-for-environmental-policy/public/veolia-plastic-whitepaper.pdf,assets/bottle.png
+phone,0.002617767,kg CO2e/day,The CO2 impact of your shopping is equivalent to the CO2 impact of using your smartphone for ,days,https://www.gov.uk/government/publications/greenhouse-gas-reporting-conversion-factors-2021,assets/smartphone.png
+kettle,0.08260274,kg C02e/boil,The CO2 impact of your shopping is equivalent to the CO2 impact of boiling a kettle  ,times,https://www.confusedaboutenergy.co.uk/index.php/energy-saving-tips/electrical-appliances/64-kettle,assets/electric_kettle.png

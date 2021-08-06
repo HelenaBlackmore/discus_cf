@@ -15,11 +15,15 @@ import plotly.express as px
 import pandas as pd
 import numpy as np
 
-
-
+    
+car_impact = 0.1245
+car_miles_impact = 0.200363
+kettle_impact = 0.08260274
+phone_impact =  0.002617767
+bottle_impact = 0.05147
 
 receipt = pd.read_csv("receipt.csv") #reads the csv receipt
-receipt = receipt[receipt.columns[[0,1,2,3,7,8,9]]]
+receipt = receipt[receipt.columns[[0,1,2,3,7,8,9,10]]]
 receipt = receipt.dropna()
 
 analogies =pd.read_csv("analogies.csv")
@@ -37,7 +41,7 @@ receipt.co2_item = pd.to_numeric(receipt.co2_item)
 
 # single long dataset to use with a mask in dash callback
 
-receipt_long = pd.melt(receipt, id_vars=['quantity', ' total_weight ',' weight_unit ', 'item','price',], 
+receipt_long = pd.melt(receipt, id_vars=['quantity', 'category',' total_weight ',' weight_unit ', 'item','price',], 
                                 value_vars=['co2_item', 'co2_kg'],
                                 var_name = 'item/kg',
                                 value_name = 'co2')
@@ -88,6 +92,11 @@ receipt_long = receipt_long.sort_values(by = ['co2'], ascending = True)
 receipt_long = receipt_long.replace(to_replace =["co2_kg", "co2_item"], value = ["kg", "item"])
 total = round(sum(receipt.co2_item),1)
 
+
+# text = '''The CO2 impact of your shopping is equivalent to the CO2 impact of driving 
+#             {} km/miles.'''.format(total/car_impact)
+# src = 'assets/emission_car.png'
+
 distance_miles = round((total * 0.411),0)           # very rough estimate
 distance_km = round((distance_miles * 1.60934),0)   # this is fine, accuarte enough
 
@@ -98,6 +107,26 @@ substitute= to_swap.iloc[0]['item']
 swap = "**something else**"   # at the moment manual, later will be based on output from SQL query (matching protein content)
 
 cf_dif = 30   # cf_dif = (1- swap/to_swap)*100
+
+fig_tree = px.treemap(receipt, path=[px.Constant("all"),'category', 'item'],
+                 values='co2_item',
+                 color='category',
+                 color_discrete_map={'(?)': '#AAAAAA',
+                                     'fruit-veg':'#5D8233', 
+                                     'meat-fish':'#8D2828', 
+                                     'dairy-eggs':'#DEEDF0',
+                                     'starch-grains':'#EBA83A',
+                                     'other':'#476072'})
+fig_tree.update_layout( # customize title etc.
+        showlegend = True,
+        title= { "text": "<b>Total Carbon Footprint by food item and category</b>",
+                "font" : {"size" : 30},
+                "x" : 0.5, 
+                 "xanchor": "center", 
+                 "yanchor": "middle"},
+        font_family="Zen Loop" ,
+        font_size = 15)
+fig_tree.data[0].hovertemplate = '%{label}<br>%{value}'
 
 
 #%% Dashboard
@@ -149,33 +178,37 @@ app.layout = html.Div(
                                             className="dropdown",
                 ),
                                 html.Div(children = [
-                                    html.Button('car', id='btn-nclicks-1', n_clicks=0, className = "button"),
-                                    html.Button('phone', id='btn-nclicks-2', n_clicks=0,  className = "button"),
-                                    html.Button('kettle', id='btn-nclicks-3', n_clicks=0,  className = "button"),
-                                    html.Button('bottle', id = 'btn-nclicks-4', n_clicks=0, className = "button"),
+                                    html.Button('car', id='btn-car', n_clicks=0, className = "button"),
+                                    html.Button('phone', id='btn-phone', n_clicks=0,  className = "button"),
+                                    html.Button('kettle', id='btn-kettle', n_clicks=0,  className = "button"),
+                                    html.Button('bottle', id = 'btn-bottle', n_clicks=0, className = "button"),
                                     html.Div(id='container-button-timestamp')
                                     ], className = "buttons"),
 
                         html.Div(children =[
-                                html.Img(alt = "co2 cloud", 
+                                html.Div(children = [
+                                    html.Img(alt = "icon", 
                                          src ="assets/co2_cloud.png",
-                                         className="icon-cloud"),
-                                html.P(children = "The food in your shopping was responsible " 
+                                         className="icon"),
+                                    html.P(children = "The food in your shopping was responsible " 
                                        "for greenhouse gases emissions " 
                                        "equivalent to {} kg of CO\u2082".format(total), 
-                                       className = "total-cf"),
-                                html.Img(alt = "car exhaust", 
-                                                src = "assets/emission_car.png",
-                                                className = "icon-car"),
-                                        html.P(children = " Similar amount of CO\u2082 would be emitted by "
-                                               "an average car driving {} miles / {} km".format(distance_miles, distance_km),
-                                               className = "drive-cf"),
-                                html.Img(alt = "holding planet",
+                                       className = "text")],className = 'total-cf'),
+                                html.Div (children = [
+                                    html.Img(id="context_img", 
+                                        src = 'assets/emission_car.png',
+                                         className = "icon"),
+                                    html.P(id = "context_text",
+                                           children = "ggggggggg",
+                                       className = "text")], className = 'context'),
+                                html.Div( children = [
+                                    html.Img(alt = "holding planet",
                                          src = "assets/planet.png",
-                                         className = "icon-planet"),
-                                html.P(children = '''You bought {}. Do you know that {} has 
+                                         className = "icon"),
+                                    html.P(children = '''You bought {}. Do you know that {} has 
                                                    a similar protein content but {} % lower carbon footprint?'''.format(substitute,swap,cf_dif),
-                                       className = "swap")
+                                       className = 'text')],
+                                        className = "swap")
             ],
                                 className = "top-row"
         ),
@@ -184,10 +217,12 @@ app.layout = html.Div(
         html.Div(
             children=[
                 html.Div(
-                    children=dcc.Graph(id = 'graph',
-                className="card",
+                    children=[dcc.Graph(id = 'graph',
+                className="card"
                                         ),
-                            ),           
+                             dcc.Graph(figure = fig_tree, className = 'card')]
+                            ), 
+                
                 
             ],
             className="wrapper",
@@ -266,7 +301,7 @@ def update_charts(graph_type):
 
     fig.update_layout( # customize font and legend orientation & position
         showlegend = False,
-        title= { "text": "<b>Carbon Footprint per {} </b>".format(graph_type), 
+        title= { "text": "<b>Carbon Footprint by {} </b>".format(graph_type), 
                  "x" : 0.5, 
                  "xanchor": "center", 
                  "yanchor": "middle", 
@@ -282,7 +317,45 @@ def update_charts(graph_type):
     cf_impact =fig
 
 
-    return cf_impact         
+    return cf_impact       
+
+@app.callback(
+   [ Output('context_text', 'children'),
+    Output("context_img", "src")], 
+   [Input("btn-car", "n_clicks"), 
+    Input('btn-kettle', 'n_clicks'), 
+    Input('btn-bottle', 'n_clicks'), 
+    Input('btn-phone', 'n_clicks')]
+)
+
+def button_click(btn_car, btn_kettle, btn_phone, btn_bottle):
+    
+    
+    changed_id = [p['prop_id'] for p in dash.callback_context.triggered][0]
+    
+    if 'btn-car' in changed_id:
+        src = 'assets/bottle.png'
+        children = '''The CO2 impact of your shopping is equivalent to the CO2 impact of boiling a kettle
+                    {} times'''.format(total/bottle_impact)
+       
+    elif 'btn-kettle' in changed_id:
+        src = 'assets/electric_kettle.png'
+        children = '''The CO2 impact of your shopping is equivalent to the CO2 impact of producing 
+                {} plastic bottles'''.format(total/kettle_impact)
+    elif 'btn-phone' in changed_id:
+        src = 'assets/smartphone.png'
+        children = '''The CO2 impact of your shopping is equivalent to the CO2 impact of using your smartphone for 
+                        {} days.'''.format(total/phone_impact)
+    else: 
+         src =' assets/car_emission.png'
+         children = '''The CO2 impact of your shopping is equivalent to the CO2 impact of driving 
+                    {}/{} km/miles in a car.'''.format(total/car_impact, total/car_miles_impact)
+       
+    
+
+    
+    return(src, children)
+    
             
             
 if __name__ == "__main__":

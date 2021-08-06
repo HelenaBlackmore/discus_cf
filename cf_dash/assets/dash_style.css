@@ -101,56 +101,26 @@ body {
 
 }
 
-.icon-cloud{
+.icon{
     width: 8%;
     position: relative;
     display: inline-block;
     margin-left: 25px;
     margin-right: 25px;
+    float: left;
     
 }
 
-.total-cf {
+.text{
     position: relative;
     display: inline-block;
     font-size: 1.4em;
     max-width: 250px;
+    float: left;
 
 }
 
-.icon-car {
-    width: 8%;
-    position: relative;
-    display: inline-block;
-    margin-left: 25px;
-    margin-right: 25px;
-}
 
-.drive-cf {
-    position: relative;
-    display: inline-block;
-    font-size: 1.4em;
-    max-width: 250px;  
-    
-
-}
-
-.icon-planet {
-    width: 8%;
-    position: relative;
-    display: inline-block;
-    margin-left: 25px;
-    margin-right: 25px;
-   
-}
-
-.swap {
-    position: relative;
-    display: inline-block;
-    font-size: 1.4em;
-    max-width: 250px;
-   
-}
 
 /* setting footer properties*/
 .footer {
